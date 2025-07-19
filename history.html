@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tukar Mata Uang - DOLARASIA Money Changer</title>
+    <title>Riwayat Transaksi - DOLARASIA Money Changer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,8 +30,8 @@
           <nav class="nav" id="nav">
             <a href="index.html" class="nav-link">Home</a>
             <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="exchange.html" class="nav-link active">Exchange</a>
-            <a href="history.html" class="nav-link">History</a>
+            <a href="exchange.html" class="nav-link">Exchange</a>
+            <a href="history.html" class="nav-link active">History</a>
             <a
               href="admin.html"
               class="nav-link"
@@ -86,212 +86,143 @@
               stroke="currentColor"
               stroke-width="2"
             >
-              <path d="M7 21l3-9 3 9M5 7l6-6 6 6M10 18h4"></path>
+              <path d="M3 3v18h18"></path>
+              <path d="M18 17V9"></path>
+              <path d="M13 17V5"></path>
+              <path d="M8 17v-3"></path>
             </svg>
-            Tukar Mata Uang
+            Riwayat Transaksi
           </h1>
           <p class="dashboard-subtitle">
-            Tukar mata uang dengan kurs kompetitif dan proses yang mudah
+            Lihat dan kelola semua transaksi penukaran mata uang Anda
           </p>
         </div>
 
-        <!-- Exchange Form & Calculator -->
-        <div class="dashboard-grid">
-          <!-- Exchange Form -->
-          <div class="dashboard-card">
-            <div class="card-header">
-              <h3 class="card-title">Detail Transaksi</h3>
-            </div>
-
-            <form class="exchange-form" id="exchange-form">
-              <!-- Transaction Type -->
-              <div class="form-group">
-                <label class="form-label">Tipe Transaksi</label>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="type"
-                      value="buy"
-                      class="form-radio"
-                      checked
-                    />
-                    <span class="radio-text">Beli Mata Uang Asing</span>
-                  </label>
-                  <label class="radio-label">
-                    <input
-                      type="radio"
-                      name="type"
-                      value="sell"
-                      class="form-radio"
-                    />
-                    <span class="radio-text">Jual Mata Uang Asing</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Currency Selection -->
-              <div class="form-group">
-                <label for="currency-select" class="form-label"
-                  >Mata Uang</label
-                >
-                <select
-                  id="currency-select"
-                  name="currency"
-                  class="form-select"
-                  required
-                >
-                  <option value="">Pilih mata uang</option>
-                </select>
-              </div>
-
-              <!-- Amount Input -->
-              <div class="form-group">
-                <label for="amount-input" class="form-label">
-                  Jumlah (<span id="amount-currency">IDR</span>)
-                </label>
-                <input
-                  type="number"
-                  id="amount-input"
-                  name="amount"
-                  class="form-input"
-                  step="0.01"
-                  min="1"
-                  required
-                />
-              </div>
-
-              <!-- Payment Method -->
-              <div class="form-group">
-                <label for="payment-method" class="form-label"
-                  >Metode Pembayaran</label
-                >
-                <select
-                  id="payment-method"
-                  name="paymentMethod"
-                  class="form-select"
-                  required
-                >
-                  <option value="">Pilih metode pembayaran</option>
-                  <option value="bank_transfer">Transfer Bank</option>
-                  <option value="cash">Tunai (Kunjungi Kantor)</option>
-                  <option value="e_wallet">E-Wallet</option>
-                </select>
-              </div>
-
-              <button
-                type="submit"
-                class="btn btn-primary btn-full"
-                id="submit-btn"
-              >
-                Buat Transaksi
-              </button>
-            </form>
-          </div>
-
-          <!-- Exchange Calculator -->
-          <div class="exchange-calculator">
-            <div class="calculator-header">
-              <h3 class="calculator-title">
-                <svg
-                  class="card-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                  <path d="M9 9h6v6H9z"></path>
-                  <path d="M9 1v6"></path>
-                  <path d="M15 1v6"></path>
-                  <path d="M9 15v6"></path>
-                  <path d="M15 15v6"></path>
-                  <path d="M1 9h6"></path>
-                  <path d="M17 9h6"></path>
-                  <path d="M1 15h6"></path>
-                  <path d="M17 15h6"></path>
-                </svg>
-                Kalkulator Exchange
-              </h3>
-              <p>Perhitungan real-time berdasarkan kurs saat ini</p>
-            </div>
-
-            <div id="currency-details" class="currency-details">
-              <p class="select-currency-message">
-                Pilih mata uang untuk melihat kurs
-              </p>
-            </div>
-
-            <div id="calculated-result" class="calculation-result hidden">
-              <!-- Dynamic calculation results -->
-            </div>
-
-            <div class="payment-info">
-              <h4>Instruksi Pembayaran:</h4>
-              <ul>
-                <li>Lengkapi form transaksi di sebelah kiri</li>
-                <li>Lakukan pembayaran dalam 24 jam</li>
-                <li>Upload bukti pembayaran untuk verifikasi</li>
-                <li>Dana akan diproses dalam 1-2 hari kerja</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Current Exchange Rates -->
-        <div class="dashboard-card">
-          <div class="card-header">
-            <h3 class="card-title">
+        <!-- Transaction Statistics -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon pending">
               <svg
-                class="card-icon"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
               </svg>
-              Kurs Hari Ini
-            </h3>
-            <span class="live-badge">Live</span>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="stat-pending">0</div>
+              <div class="stat-label">Menunggu</div>
+            </div>
           </div>
-          <div id="exchange-rates" class="loading">
+
+          <div class="stat-card">
+            <div class="stat-icon completed">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 12l2 2 4-4"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="stat-completed">0</div>
+              <div class="stat-label">Selesai</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon rejected">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="stat-rejected">0</div>
+              <div class="stat-label">Ditolak</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon total">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="stat-total">0</div>
+              <div class="stat-label">Total</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction History -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3 class="card-title">Semua Transaksi</h3>
+            <div class="card-actions">
+              <select id="status-filter" class="filter-select">
+                <option value="all">Semua Status</option>
+                <option value="pending">Menunggu</option>
+                <option value="completed">Selesai</option>
+                <option value="rejected">Ditolak</option>
+              </select>
+              <button class="btn btn-outline btn-sm" id="export-btn">
+                <svg
+                  style="width: 1rem; height: 1rem; margin-right: 0.25rem"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7,10 12,15 17,10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Export
+              </button>
+            </div>
+          </div>
+
+          <div id="transaction-history" class="loading">
             <div class="spinner"></div>
-            <p>Memuat kurs mata uang...</p>
+            <p>Memuat riwayat transaksi...</p>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Transaction Success Modal -->
-    <div id="success-modal" class="modal hidden">
+    <!-- Transaction Detail Modal -->
+    <div id="detail-modal" class="modal hidden">
       <div class="modal-content">
         <div class="modal-header">
-          <h3>Transaksi Berhasil Dibuat!</h3>
+          <h3>Detail Transaksi</h3>
+          <button class="modal-close" onclick="closeDetailModal()">
+            &times;
+          </button>
         </div>
-        <div class="modal-body">
-          <div class="success-icon">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              style="width: 64px; height: 64px; color: #00b906"
-            >
-              <path d="M9 12l2 2 4-4"></path>
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-          </div>
-          <p>
-            Transaksi Anda telah berhasil dibuat. Silakan lakukan pembayaran dan
-            upload bukti untuk verifikasi.
-          </p>
-          <div class="modal-actions">
-            <a href="history.html" class="btn btn-primary">Lihat Riwayat</a>
-            <button class="btn btn-outline" onclick="closeSuccessModal()">
-              Buat Transaksi Lagi
-            </button>
-          </div>
+        <div class="modal-body" id="transaction-detail-content">
+          <!-- Dynamic content -->
         </div>
       </div>
     </div>
@@ -299,6 +230,303 @@
     <script src="js/utils.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/exchange.js"></script>
+    <script>
+      // History page functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        loadTransactionHistory();
+        initializeFilters();
+        initializeExport();
+      });
+
+      function loadTransactionHistory() {
+        const user = window.authManager.getCurrentUser();
+        if (!user) return;
+
+        const transactions = getTransactionsByUserId(user.id);
+        updateStatistics(transactions);
+        displayTransactions(transactions);
+      }
+
+      function getTransactionsByUserId(userId) {
+        const transactions = window.utils.storage.get(
+          "dolarasia_transactions",
+          [],
+        );
+        return transactions
+          .filter((t) => t.userId === userId)
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      }
+
+      function updateStatistics(transactions) {
+        const stats = {
+          pending: transactions.filter((t) => t.status === "pending").length,
+          completed: transactions.filter((t) => t.status === "completed")
+            .length,
+          rejected: transactions.filter((t) => t.status === "rejected").length,
+          total: transactions.length,
+        };
+
+        document.getElementById("stat-pending").textContent = stats.pending;
+        document.getElementById("stat-completed").textContent = stats.completed;
+        document.getElementById("stat-rejected").textContent = stats.rejected;
+        document.getElementById("stat-total").textContent = stats.total;
+      }
+
+      function displayTransactions(transactions) {
+        const container = document.getElementById("transaction-history");
+
+        if (transactions.length === 0) {
+          container.innerHTML = `
+            <div class="no-transactions">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 64px; height: 64px; color: #ccc; margin-bottom: 1rem;">
+                <path d="M3 3v18h18"></path>
+                <path d="M18 17V9"></path>
+                <path d="M13 17V5"></path>
+                <path d="M8 17v-3"></path>
+              </svg>
+              <h3>Belum Ada Transaksi</h3>
+              <p>Anda belum memiliki riwayat transaksi penukaran mata uang</p>
+              <a href="exchange.html" class="btn btn-primary">Mulai Tukar Mata Uang</a>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="transactions-table">
+            <div class="table-header">
+              <div class="col-date">Tanggal</div>
+              <div class="col-type">Tipe</div>
+              <div class="col-currency">Pertukaran</div>
+              <div class="col-amount">Jumlah</div>
+              <div class="col-total">Total</div>
+              <div class="col-status">Status</div>
+              <div class="col-actions">Aksi</div>
+            </div>
+            ${transactions
+              .map(
+                (transaction) => `
+              <div class="table-row">
+                <div class="col-date" data-label="Tanggal">
+                  <div class="date-info">
+                    <div class="date">${window.utils.formatDate(transaction.createdAt, { month: "short", day: "numeric" })}</div>
+                    <div class="time">${new Date(transaction.createdAt).toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })}</div>
+                  </div>
+                </div>
+                <div class="col-type" data-label="Tipe">
+                  <span class="transaction-type ${transaction.type}">
+                    ${transaction.type === "buy" ? "Beli" : "Jual"}
+                  </span>
+                </div>
+                <div class="col-currency" data-label="Pertukaran">
+                  <div class="currency-exchange">
+                    ${transaction.fromCurrency} → ${transaction.toCurrency}
+                  </div>
+                </div>
+                <div class="col-amount" data-label="Jumlah">
+                  ${window.utils.formatNumber(transaction.amount)} ${transaction.fromCurrency}
+                </div>
+                <div class="col-total" data-label="Total">
+                  <strong>${window.utils.formatNumber(transaction.totalAmount)} ${transaction.toCurrency}</strong>
+                </div>
+                <div class="col-status" data-label="Status">
+                  <span class="status-badge status-${transaction.status}">
+                    ${getStatusText(transaction.status)}
+                  </span>
+                </div>
+                <div class="col-actions" data-label="Aksi">
+                  <button class="btn btn-outline btn-sm" onclick="showTransactionDetail('${transaction.id}')">
+                    Detail
+                  </button>
+                </div>
+              </div>
+            `,
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function getStatusText(status) {
+        const statusMap = {
+          pending: "Menunggu",
+          completed: "Selesai",
+          rejected: "Ditolak",
+        };
+        return statusMap[status] || status;
+      }
+
+      function initializeFilters() {
+        const statusFilter = document.getElementById("status-filter");
+        statusFilter.addEventListener("change", function () {
+          const filterValue = this.value;
+          const user = window.authManager.getCurrentUser();
+          if (!user) return;
+
+          const allTransactions = getTransactionsByUserId(user.id);
+          const filteredTransactions =
+            filterValue === "all"
+              ? allTransactions
+              : allTransactions.filter((t) => t.status === filterValue);
+
+          displayTransactions(filteredTransactions);
+        });
+      }
+
+      function initializeExport() {
+        const exportBtn = document.getElementById("export-btn");
+        exportBtn.addEventListener("click", function () {
+          const user = window.authManager.getCurrentUser();
+          if (!user) return;
+
+          const transactions = getTransactionsByUserId(user.id);
+          exportTransactionsToCSV(transactions);
+        });
+      }
+
+      function exportTransactionsToCSV(transactions) {
+        const headers = [
+          "Tanggal",
+          "Tipe",
+          "Dari",
+          "Ke",
+          "Jumlah",
+          "Kurs",
+          "Total",
+          "Status",
+          "Metode Pembayaran",
+        ];
+
+        const csvContent = [
+          headers.join(","),
+          ...transactions.map((t) =>
+            [
+              new Date(t.createdAt).toLocaleDateString("id-ID"),
+              t.type === "buy" ? "Beli" : "Jual",
+              t.fromCurrency,
+              t.toCurrency,
+              t.amount,
+              t.exchangeRate,
+              t.totalAmount,
+              getStatusText(t.status),
+              t.paymentMethod.replace("_", " "),
+            ].join(","),
+          ),
+        ].join("\n");
+
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `dolarasia-transactions-${new Date().toISOString().split("T")[0]}.csv`;
+        a.click();
+        window.URL.revokeObjectURL(url);
+
+        showNotification("Riwayat transaksi berhasil diexport", "success");
+      }
+
+      function showTransactionDetail(transactionId) {
+        const user = window.authManager.getCurrentUser();
+        if (!user) return;
+
+        const transactions = getTransactionsByUserId(user.id);
+        const transaction = transactions.find((t) => t.id === transactionId);
+
+        if (!transaction) return;
+
+        const modal = document.getElementById("detail-modal");
+        const content = document.getElementById("transaction-detail-content");
+
+        content.innerHTML = `
+          <div class="transaction-detail">
+            <div class="detail-header">
+              <h4>Transaksi #${transaction.id}</h4>
+              <span class="status-badge status-${transaction.status}">
+                ${getStatusText(transaction.status)}
+              </span>
+            </div>
+            
+            <div class="detail-grid">
+              <div class="detail-item">
+                <label>Tanggal:</label>
+                <span>${window.utils.formatDateTime(transaction.createdAt)}</span>
+              </div>
+              
+              <div class="detail-item">
+                <label>Tipe Transaksi:</label>
+                <span>${transaction.type === "buy" ? "Beli" : "Jual"} ${transaction.toCurrency}</span>
+              </div>
+              
+              <div class="detail-item">
+                <label>Pertukaran:</label>
+                <span>${transaction.fromCurrency} → ${transaction.toCurrency}</span>
+              </div>
+              
+              <div class="detail-item">
+                <label>Jumlah:</label>
+                <span>${window.utils.formatNumber(transaction.amount)} ${transaction.fromCurrency}</span>
+              </div>
+              
+              <div class="detail-item">
+                <label>Kurs:</label>
+                <span>${window.utils.formatNumber(transaction.exchangeRate)} IDR</span>
+              </div>
+              
+              <div class="detail-item">
+                <label>Total:</label>
+                <span><strong>${window.utils.formatNumber(transaction.totalAmount)} ${transaction.toCurrency}</strong></span>
+              </div>
+              
+              <div class="detail-item">
+                <label>Metode Pembayaran:</label>
+                <span>${transaction.paymentMethod.replace("_", " ").toUpperCase()}</span>
+              </div>
+              
+              ${
+                transaction.completedAt
+                  ? `
+                <div class="detail-item">
+                  <label>Diselesaikan:</label>
+                  <span>${window.utils.formatDateTime(transaction.completedAt)}</span>
+                </div>
+              `
+                  : ""
+              }
+            </div>
+            
+            ${
+              transaction.status === "pending"
+                ? `
+              <div class="payment-info">
+                <h5>Instruksi Pembayaran:</h5>
+                <ol>
+                  <li>Lakukan pembayaran sesuai metode yang dipilih</li>
+                  <li>Simpan bukti pembayaran</li>
+                  <li>Tunggu verifikasi dari admin (1-2 hari kerja)</li>
+                  <li>Dana akan ditransfer setelah verifikasi selesai</li>
+                </ol>
+              </div>
+            `
+                : ""
+            }
+          </div>
+        `;
+
+        modal.classList.remove("hidden");
+      }
+
+      function closeDetailModal() {
+        const modal = document.getElementById("detail-modal");
+        modal.classList.add("hidden");
+      }
+
+      // Close modal when clicking outside
+      document.addEventListener("click", function (e) {
+        const modal = document.getElementById("detail-modal");
+        if (modal && e.target === modal) {
+          closeDetailModal();
+        }
+      });
+    </script>
   </body>
 </html>
